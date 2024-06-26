@@ -1,0 +1,43 @@
+[v-cloak] {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.topnav {
+  background-color: #143157;
+  overflow: hidden;
+  font-weight: 550;
+  height: 15%;
+  cursor: pointer;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 35px 40px;
+  text-decoration: none;
+  font-size: 30px;
+  height: auto;
+}
+.topnav a:hover {
+  background-color: #06538a;
+  color: white;
+}
+header {
+  text-align: center;
+}
+
+#abandonment-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 15px;
+  flex-direction: column;
+}

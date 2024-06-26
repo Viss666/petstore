@@ -7,7 +7,69 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="topnav">
+        <a v-on:click="navigatePage('pets')">Pets</a>
+        <a v-on:click="navigatePage('applications')">Applications</a>
+        <a v-on:click="navigatePage('abandonpet')">Abandon Pet</a>
+      </div>
+
+      <div v-if="currentPage == 'pets'" id="home">
+        <header>
+          <h1>All Pets</h1>
+        </header>
+
+        <div id="pets-wrapper">
+          <ul v-for="pet in allPets">
+            <li>
+              <p>{{ pet.name }}</p>
+              <p>{{ pet.species }}</p>
+              <p>{{ pet.breed }}</p>
+              <p>{{ pet.age }}</p>
+              <p>{{ pet.gender }}</p>
+              <button>Delete</button>
+              <!-- onclick to navigate to an application page with that pets index -->
+              <button @click="">Apply for adoption</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div v-if="currentPage == 'applications'" id="applications">
+        <header>
+          <h1>All applications</h1>
+        </header>
+        <ul v-for="app in applications">
+          <li>
+            <p>{{app.name}}</p>
+            <p>{{app.phoneNumber}}</p>
+            <p>{{app.email}}</p>
+            <p>{{app.petid}}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div v-if="currentPage == 'abandonpet'" id="abandon">
+        <header>
+          <h1>Abandon your pet!</h1>
+        </header>
+        <div id="abandonment-wrapper">
+          <input v-model="name" placeholder="name.." />
+          <input v-model="species" placeholder="species.." />
+          <input v-model="breed" placeholder="breed.." />
+          <input v-model="age" placeholder="age.." />
+          <input v-model="gender" placeholder="gender.." />
+          <button @click="createPet()">Get rid of your pet forever!</button>
+        </div>
+      </div>
+
+      <div v-if="currentPage == 'adopt'">
+        <header>
+          <h1>Fillout your application:</h1>
+        </header>
+        <div id="application-wrapper"></div>
+      </div>
+    </div>
   </body>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="app.js"></script>
