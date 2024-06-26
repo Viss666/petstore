@@ -50,6 +50,7 @@ app.post("/applications", async (request, response) => {
     name: request.body.name,
     phoneNumber: request.body.phoneNumber,
     email: request.body.email,
+    petid: request.body.id,
   });
   try {
     const savedApplication = await newApplication.save();
@@ -58,6 +59,20 @@ app.post("/applications", async (request, response) => {
     console.log(error);
     response.status(404).send("Generic Error");
   }
+});
+
+app.delete("/pets/:id", async (request, response) => {
+  try {
+    console.log("Delte single pet");
+    console.log(request.params.id);
+    let isDeleted = await model.Pet.findByIdAndDelete({
+      _id: request.params.id,
+    });
+    if (!isDeleted) {
+      response.status(404).send("could not find pet");
+    }
+    response.status(204).send("Pet deleted");
+  } catch (error) {}
 });
 
 app.listen(8080, () => {

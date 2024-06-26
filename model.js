@@ -15,6 +15,7 @@ const applicationSchema = new mongoose.Schema({
   name: String,
   phoneNumber: String,
   email: String,
+  petid: String,
 });
 
 const Pet = mongoose.model("Pet", PetShcema);
